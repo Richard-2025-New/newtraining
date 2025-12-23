@@ -172,7 +172,6 @@ export const useAppStore = create<AppState>((set, get) => ({
   setCurrentUser: (user) => set({ user, isAuthenticated: true }),
   setAuthenticated: (authenticated) => set({ isAuthenticated: authenticated }),
   setSelectedUserType: (userType) => set({ selectedUserType: userType }),
-<<<<<<< HEAD
   login: async (email, password) => {
     // 模拟登录
     const user: User = {
@@ -192,28 +191,7 @@ export const useAppStore = create<AppState>((set, get) => ({
     set({ user, isAuthenticated: true })
     return user
   },
-  logout: () => set({ user: null, isAuthenticated: false }), // 实现 logout
-=======
-login: async (email, password) => {
-  const user: User = {
-    id: `user-${Date.now()}`,
-    name: email.split('@')[0] || '用户',
-    email,
-    userType: 'newcomer',
-    joinDate: new Date().toISOString(),
-    totalPoints: 0,
-    points: 0,
-    currentStreak: 0,
-    totalStudyTime: 0,
-    completedCourses: 0,
-    enrolledCourses: [],
-    level: 1
-  }
-  set({ user, isAuthenticated: true })
-  return user
-},
   logout: () => set({ user: null, isAuthenticated: false }),
->>>>>>> 543f6950a582ae677cf3fd4bd67ce36b28773968
 
   setCourses: (courses) => set({ courses }),
   setCurrentCourse: (course) => set({ currentCourse: course }),

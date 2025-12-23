@@ -10,21 +10,37 @@ import Script from 'next/script'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Newtrain - 专业外贸培训平台',
-  description: '19年外贸行业经验，专业的外贸培训平台，帮助外贸新人、大学生、企业老板成功转型外贸，实现职业发展目标。',
-  keywords: '外贸培训,外贸新人培训,大学生外贸培训,内贸转外贸,外贸课程,外贸学习',
-  authors: [{ name: 'Newtrain Team' }],
+  metadataBase: new URL(process.env.SITE_URL || 'https://newtraining.cn'),
+  title: {
+    default: 'Newtrain 新训 | 外贸布道者实战训练营',
+    template: '%s | Newtrain 新训'
+  },
+  description: '19年外贸实战经验倾囊相授。面向外贸新人、大学生与企业老板的体系化培训平台。融合"流程落地"与"高阶思维重塑"，提供客户开发、报价谈判、单证操作、合规风控等全流程实战指导。',
+  keywords: ['外贸培训', '外贸新人', '外贸业务员', '外贸SOHO', '外贸老板转型', '外贸实战课程', '客户开发', '外贸单证', '外贸合规', 'Newtrain', '新训'],
+  authors: [{ name: 'Richard', url: 'https://newtraining.cn' }],
+  creator: 'Richard',
+  publisher: 'Newtrain',
   openGraph: {
-    title: 'Newtrain - 专业外贸培训平台',
-    description: '19年外贸行业经验，专业的外贸培训平台',
-    type: 'website',
+    title: 'Newtrain 新训 | 外贸布道者实战训练营',
+    description: '19年外贸实战经验倾囊相授。融合"流程落地"与"高阶思维重塑"，助你既能低头做事，更能抬头看路。',
+    url: 'https://newtraining.cn',
+    siteName: 'Newtrain 新训',
     locale: 'zh_CN',
-    siteName: 'Newtrain',
+    type: 'website',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Newtrain 新训 - 外贸实战训练营',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Newtrain - 专业外贸培训平台',
-    description: '19年外贸行业经验，专业的外贸培训平台',
+    title: 'Newtrain 新训 | 外贸布道者实战训练营',
+    description: '19年外贸实战经验倾囊相授。助你快速掌握外贸核心技能。',
+    images: ['/og-image.jpg'],
   },
   robots: {
     index: true,
@@ -37,11 +53,13 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: 'your-google-verification-code',
-    other: {
-      baidu: 'your-baidu-verification-code',
-    },
+  alternates: {
+    canonical: 'https://newtraining.cn',
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png',
   },
 }
 
@@ -53,29 +71,23 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="theme-color" content="#2563eb" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        {/* 统计脚本（使用 next/script，避免 Hydration 差异）*/}
-        <Script
-          src="https://hm.baidu.com/hm.js?your-baidu-analytics-code"
-          strategy="afterInteractive"
-        />
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=your-google-analytics-code"
-          strategy="afterInteractive"
-        />
-        <Script id="gtag-init" strategy="afterInteractive">
+        {/* 百度链接自动推送脚本 */}
+        <Script id="baidu-push" strategy="afterInteractive">
           {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);} 
-            gtag('js', new Date());
-            gtag('config', 'your-google-analytics-code');
+            (function(){
+              var bp = document.createElement('script');
+              var curProtocol = window.location.protocol.split(':')[0];
+              if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+              }
+              else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+              }
+              var s = document.getElementsByTagName("script")[0];
+              s.parentNode.insertBefore(bp, s);
+            })();
           `}
         </Script>
       </head>
@@ -86,7 +98,6 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        {/* 右侧交流工具条（客户端统计购物车数量）*/}
         <FloatingToolbarClient />
       </body>
     </html>

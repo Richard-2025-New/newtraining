@@ -2,12 +2,12 @@ import Link from 'next/link'
 import { CourseCard } from '@/components/ui/course-card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { Rating } from '@/components/ui/rating'
 import { 
   Play, Award, Users, TrendingUp, Clock, Star, 
   BookOpen, Target, Globe, Shield, ArrowRight, CheckCircle,
-  MessageCircle, Phone, Mail, MapPin, ChevronRight
+  MessageCircle, Phone, Mail, MapPin, ChevronRight, User, Briefcase
 } from 'lucide-react'
 
 // 精选课程数据 - 参考米课的定价策略
@@ -133,111 +133,104 @@ const testimonials = [
   },
 ]
 
-// 学习路径 - 参考EF的分层教学
-const learningPaths = [
-  {
-    title: '外贸新人路径',
-    description: '零基础到独立操作外贸业务',
-    duration: '30-60天',
-    courses: ['外贸新人30天速成训练营', '外贸单证实务操作', '客户开发与沟通技巧'],
-    suitableFor: '外贸新人、转行人员',
-    icon: '🎯',
-    color: 'from-blue-500 to-blue-600'
-  },
-  {
-    title: '大学生就业路径',
-    description: '从校园到职场的完美过渡',
-    duration: '20-45天',
-    courses: ['大学生外贸就业指导课程', '简历优化与面试技巧', '职场沟通与协作'],
-    suitableFor: '应届毕业生、在校大学生',
-    icon: '🎓',
-    color: 'from-green-500 to-green-600'
-  },
-  {
-    title: '老板转型路径',
-    description: '传统企业家的外贸转型之路',
-    duration: '45-90天',
-    courses: ['老板转型外贸实战指南', '团队管理与激励机制', '海外市场战略规划'],
-    suitableFor: '企业老板、管理层',
-    icon: '💼',
-    color: 'from-purple-500 to-purple-600'
-  },
-]
-
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Header 由全局布局提供 */}
-      
       {/* Hero Section - 融合EF的国际化风格和米课的个人IP突出 */}
-      <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-purple-800 text-white overflow-hidden">
-        
+      <section className="relative bg-[#001b3a] text-white overflow-hidden">
+        {/* 背景装饰 */}
+        {/* <div className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center opacity-20"></div> */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#001b3a] via-[#001b3a]/90 to-transparent"></div>
+
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-          <div className="text-center space-y-8">
-            {/* 主标题 - 突出个人IP */}
-            <div className="space-y-6">
-              <div className="inline-flex items-center bg-white bg-opacity-25 rounded-full px-4 py-2 mb-4">
-                <Star className="w-4 h-4 text-yellow-400 mr-2" />
-                <span className="text-sm font-medium text-gray-900">19年外贸实战经验 · 业界权威</span>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              {/* 主标题 - 突出个人IP */}
+              <div className="space-y-6">
+                <div className="inline-flex items-center bg-blue-600/30 border border-blue-400/30 rounded-full px-4 py-2 mb-4 backdrop-blur-sm">
+                  <Star className="w-4 h-4 text-yellow-400 mr-2" />
+                  <span className="text-sm font-medium text-blue-100">19年外贸实战经验 · 业界权威</span>
+                </div>
+                
+                <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-tight">
+                  外贸布道者的
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 mt-2">
+                    30天实战特训营
+                  </span>
+                </h1>
+                
+                <p className="text-xl text-gray-300 max-w-xl leading-relaxed">
+                  从小员工到外贸负责人再到创业公司老板，融合"体系化流程落地"与"高阶思维重塑"，助你既能低头做事，更能抬头看路。
+                </p>
               </div>
               
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-                外贸布道者的
-                <span className="block text-yellow-300 mt-2">30天特训营</span>
-              </h1>
-              
-              <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
-                从小员工到外贸负责人再到创业公司老板，19年实战经验倾囊相授
-                <br className="hidden md:block" />
-                融合"体系化流程落地"+"高阶思维重塑"，让你既能"低头做事"，更能"抬头看路"
-              </p>
+              {/* 双通道入口 - 仿EF风格 */}
+              <div className="grid sm:grid-cols-2 gap-4">
+                <Link href="/tracks#newbie" className="group">
+                  <div className="bg-white/10 hover:bg-white/20 border border-white/10 rounded-xl p-6 transition-all duration-300 backdrop-blur-sm">
+                    <div className="flex items-center justify-between mb-4">
+                      <User className="w-8 h-8 text-blue-400" />
+                      <ArrowRight className="w-5 h-5 text-gray-400 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                    <h3 className="text-lg font-bold text-white mb-1">我是新人/大学生</h3>
+                    <p className="text-sm text-gray-400">解决就业 · 技能落地 · 职业规划</p>
+                  </div>
+                </Link>
+
+                <Link href="/tracks#boss" className="group">
+                  <div className="bg-gradient-to-br from-blue-600/20 to-purple-600/20 hover:from-blue-600/30 hover:to-purple-600/30 border border-blue-500/30 rounded-xl p-6 transition-all duration-300 backdrop-blur-sm">
+                    <div className="flex items-center justify-between mb-4">
+                      <Briefcase className="w-8 h-8 text-purple-400" />
+                      <ArrowRight className="w-5 h-5 text-gray-400 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                    <h3 className="text-lg font-bold text-white mb-1">我是老板/高管</h3>
+                    <p className="text-sm text-gray-400">转型指路 · 团队搭建 · 战略风控</p>
+                  </div>
+                </Link>
+              </div>
+
+              {/* 信任标识 */}
+              <div className="flex items-center gap-6 text-sm text-gray-400 pt-4">
+                <div className="flex items-center gap-2">
+                  <Users className="w-4 h-4 text-blue-400" />
+                  <span>10000+ 学员验证</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Shield className="w-4 h-4 text-green-400" />
+                  <span>实战落地保障</span>
+                </div>
+              </div>
             </div>
-            
-            {/* 核心卖点 - 参考米课的ROI强调 */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-12">
-              <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 text-center">
-                <div className="text-3xl font-bold text-yellow-300">10000+</div>
-                <div className="text-sm mt-1">学员成功转型</div>
-              </div>
-              <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 text-center">
-                <div className="text-3xl font-bold text-yellow-300">98%</div>
-                <div className="text-sm mt-1">学员满意度</div>
-              </div>
-              <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-lg p-6 text-center">
-                <div className="text-3xl font-bold text-yellow-300">30天</div>
-                <div className="text-sm mt-1">快速见效</div>
-              </div>
-            </div>
-            
-            {/* CTA按钮 - 参考EF的清晰行动引导 */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12">
-              <Link href="/courses#type-select">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-8 py-3 text-lg">
-                  <Play className="w-5 h-5 mr-2" />
-                  立即开始学习
-                </Button>
-              </Link>
-              <a href="tel:4008888888">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-700 px-8 py-3 text-lg">
-                  <Phone className="w-5 h-5 mr-2" />
-                  免费咨询 400-888-8888
-                </Button>
-              </a>
-            </div>
-            
-            {/* 信任标识 */}
-            <div className="flex items-center justify-center gap-8 mt-8 text-sm text-blue-100">
-              <div className="flex items-center gap-2">
-                <Shield className="w-4 h-4" />
-                <span>7天无理由退款</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4" />
-                <span>终身免费更新</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Users className="w-4 h-4" />
-                <span>1对1专业答疑</span>
+
+            {/* 右侧：导师形象/价值展示 (占位) */}
+            <div className="hidden lg:block relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+              <div className="relative bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-md">
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center shrink-0 font-bold text-2xl">30</div>
+                    <div>
+                      <h3 className="text-lg font-bold text-white">30天体系化流程落地</h3>
+                      <p className="text-sm text-gray-400">从开发到成交的全流程 SOP</p>
+                    </div>
+                  </div>
+                  <div className="w-px h-8 bg-white/10 ml-6"></div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center shrink-0 font-bold text-2xl">高</div>
+                    <div>
+                      <h3 className="text-lg font-bold text-white">高阶思维重塑</h3>
+                      <p className="text-sm text-gray-400">认知破局，掌握底层商业逻辑</p>
+                    </div>
+                  </div>
+                  <div className="w-px h-8 bg-white/10 ml-6"></div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center shrink-0 font-bold text-2xl">新</div>
+                    <div>
+                      <h3 className="text-lg font-bold text-white">政策适配与高潜赛道</h3>
+                      <p className="text-sm text-gray-400">站稳脚跟，踩准时代风口</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -251,19 +244,41 @@ export default function HomePage() {
             <h2 className="text-4xl font-bold text-gray-900 mb-4">19年一线实战老板亲授课程</h2>
             <p className="text-lg text-gray-700 mb-6">从小员工→外贸负责人→创业公司老板，完整闭环的一线实战经验，重在落地与成交。</p>
             <ul className="space-y-3 text-gray-700">
-              <li>• 体系化流程落地：标准化到可执行的 SOP</li>
-              <li>• 高阶思维重塑：方向与细节双把手</li>
-              <li>• 业务闭环：客户开发→报价谈判→单证→合规风控</li>
+              <li className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5 text-blue-600" />
+                体系化流程落地：标准化到可执行的 SOP
+              </li>
+              <li className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5 text-blue-600" />
+                高阶思维重塑：方向与细节双把手
+              </li>
+              <li className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5 text-blue-600" />
+                业务闭环：客户开发→报价谈判→单证→合规风控
+              </li>
             </ul>
             <div className="mt-8">
-              <Link href="/courses#type-select">
-                <Button className="bg-gradient-to-r from-blue-600 to-blue-700">查看精品课程</Button>
+              <Link href="/courses">
+                <Button className="bg-gray-900 text-white hover:bg-blue-700 px-8 py-6 text-lg rounded-full">
+                  查看精品课程 <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
               </Link>
             </div>
           </div>
-          <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl p-10 text-white">
-            <div className="text-2xl font-bold mb-2">导师寄语</div>
-            <p className="text-blue-100">“学习的终点是能落地，能成交。把时间用在对的事上，让外贸更简单。”</p>
+          <div className="bg-gray-50 rounded-2xl p-10 border border-gray-100">
+            <div className="text-2xl font-bold mb-4 text-gray-900">导师寄语</div>
+            <p className="text-gray-600 text-lg italic leading-relaxed">
+              “学习的终点是能落地，能成交。把时间用在对的事上，让外贸更简单。我希望通过这套体系，让新人少走弯路，让老板看清方向。”
+            </p>
+            <div className="mt-6 flex items-center gap-4">
+               <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-500">
+                 R
+               </div>
+               <div>
+                 <div className="font-bold text-gray-900">Richard</div>
+                 <div className="text-sm text-gray-500">Newtrain 创始人 / 外贸布道者</div>
+               </div>
+            </div>
           </div>
         </div>
       </section>
@@ -271,7 +286,7 @@ export default function HomePage() {
       {/* 痛点与解决方案 - 激发报名冲动 */}
       <section className="py-20 bg-gray-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">外贸学习的常见痛点，我们一次解决</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">外贸学习的常见痛点，我们一次解决</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { t: '方向迷茫', s: '不知道从哪里开始，容易低效乱学', r: '清晰学习路径与30天训练体系' },
@@ -281,42 +296,18 @@ export default function HomePage() {
               { t: '合规风险', s: '不了解政策与合规要求', r: '合规风控与风险预警' },
               { t: '时间碎片化', s: '工作忙没法系统学习', r: '模块化课程与移动端学习' },
             ].map((p, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 border border-gray-200">
-                <div className="font-semibold text-gray-900">{p.t}</div>
-                <div className="text-sm text-gray-600 mt-1">{p.s}</div>
-                <div className="text-blue-600 mt-2">解决方案：{p.r}</div>
+              <div key={i} className="bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-lg transition-shadow">
+                <div className="font-bold text-xl text-gray-900 mb-2">{p.t}</div>
+                <div className="text-gray-500 mb-4 h-12">{p.s}</div>
+                <div className="pt-4 border-t border-gray-50 text-blue-600 font-medium flex items-center">
+                  <CheckCircle className="w-4 h-4 mr-2" />
+                  {p.r}
+                </div>
               </div>
             ))}
           </div>
-          <div className="text-center mt-8">
-            <Link href="/courses#type-select">
-              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-8 py-3 text-lg">立即报名</Button>
-            </Link>
-          </div>
         </div>
       </section>
-
-      {/* AI重塑外贸新打法 - 战略入口 */}
-      <section className="py-16 bg-gradient-to-r from-violet-700 to-indigo-900 text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between gap-6">
-          <div>
-            <div className="inline-flex items-center bg-white bg-opacity-20 rounded-full px-3 py-1 mb-3 text-sm">
-              <span className="text-black">战略升级</span>
-            </div>
-            <h2 className="text-3xl font-bold mb-2">AI重塑外贸新打法</h2>
-            <p className="text-blue-100 max-w-2xl">用AI与自动化重构从开发客户到成交的全链路，让外贸更高效、更智能。</p>
-          </div>
-          <Link href="/ai" className="shrink-0">
-            <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-8 py-3 text-lg">
-              了解AI新打法
-            </Button>
-          </Link>
-        </div>
-      </section>
-
-      {/* 自动化相关内容回归 AI 专题页入口 */}
-
-      {/* 学习路径入口已并入课程页与线下课程页 */}
 
       {/* 精选课程 - 参考米课的展示方式 */}
       <section className="py-20 bg-white">
@@ -330,102 +321,14 @@ export default function HomePage() {
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {featuredCourses.map((course) => (
-              <div key={course.id} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
-                {/* 课程头图 */}
-                <div className="h-48 bg-gradient-to-br from-blue-500 to-purple-600 relative">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <BookOpen className="w-16 h-16 text-white opacity-80" />
-                  </div>
-                  
-                  {/* 标签 */}
-                  <div className="absolute top-4 left-4 flex gap-2">
-                    {course.isHot && (
-                      <Badge className="bg-red-500 text-white px-2 py-1 text-xs">
-                        🔥 热门
-                      </Badge>
-                    )}
-                    {course.isNew && (
-                      <Badge className="bg-green-500 text-white px-2 py-1 text-xs">
-                        🆕 新课程
-                      </Badge>
-                    )}
-                  </div>
-                  
-                  {/* 价格标签 */}
-                  <div className="absolute top-4 right-4">
-                    <div className="bg-white bg-opacity-90 rounded-full px-3 py-1">
-                      <span className="text-lg font-bold text-red-500">¥{course.price}</span>
-                      {course.originalPrice && (
-                        <span className="text-sm text-gray-500 line-through ml-2">¥{course.originalPrice}</span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="p-6">
-                  {/* 讲师信息 - 突出个人IP */}
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
-                      {course.instructor.charAt(0)}
-                    </div>
-                    <div className="ml-3">
-                      <div className="font-semibold text-gray-900">{course.instructor}</div>
-                      <div className="text-sm text-gray-600">{course.instructorTitle}</div>
-                    </div>
-                  </div>
-                  
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{course.title}</h3>
-                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">{course.description}</p>
-                  
-                  {/* 适合人群 */}
-                  <div className="mb-4">
-                    <span className="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded-full">
-                      适合：{course.suitableFor}
-                    </span>
-                  </div>
-                  
-                  {/* 课程特色 */}
-                  <div className="mb-4">
-                    <div className="flex flex-wrap gap-1">
-                      {course.features.map((feature, index) => (
-                        <span key={index} className="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">
-                          {feature}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  {/* 课程数据 */}
-                  <div className="flex items-center justify-between text-sm text-gray-600 mb-4">
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-4 h-4" />
-                      <span>{course.duration}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Users className="w-4 h-4" />
-                      <span>{course.studentCount}人学习</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Rating value={course.rating} size="sm" />
-                      <span>{course.rating}分</span>
-                    </div>
-                  </div>
-                  
-                  <Link href={`/payment?course=${encodeURIComponent(course.id)}`} className="block">
-                    <Button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800">
-                      立即报名
-                      <ChevronRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </Link>
-                </div>
-              </div>
+              <CourseCard key={course.id} course={course} />
             ))}
           </div>
           
           {/* 更多课程按钮 */}
           <div className="text-center mt-12">
             <Link href="/courses">
-              <Button variant="outline" size="lg" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
+              <Button variant="outline" size="lg" className="border-gray-300 text-gray-700 hover:bg-gray-50 px-8">
                 查看更多课程
                 <ChevronRight className="w-5 h-5 ml-2" />
               </Button>
@@ -434,55 +337,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 学员成功案例 - 参考米课的社会证明 */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">学员成功故事</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              真实的学员反馈，见证每一个人的成长与蜕变
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <CardContent className="p-8">
-                  <div className="flex items-center mb-6">
-                    <div className="text-4xl mr-4">{testimonial.avatar}</div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
-                      <p className="text-sm text-gray-600">{testimonial.role}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="mb-4">
-                    <Rating value={testimonial.rating} size="sm" />
-                  </div>
-                  
-                  <p className="text-gray-700 italic leading-relaxed mb-6">
-                    "{testimonial.content}"
-                  </p>
-                  
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                    <div className="text-sm">
-                      <div className="font-semibold text-green-600">{testimonial.achievement}</div>
-                      <div className="text-gray-500">{testimonial.duration}</div>
-                    </div>
-                    <MessageCircle className="w-5 h-5 text-gray-400" />
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* 品牌优势 - 参考EF的专业展示 */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#f8f9fa]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">为什么选择我们</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">为什么选择 Newtrain</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               19年外贸实战经验，打造最实用的外贸培训体系
             </p>
@@ -490,61 +349,17 @@ export default function HomePage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {advantages.map((advantage, index) => (
-              <div key={index} className="text-center group hover:transform hover:scale-105 transition-all duration-300">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg">
-                  <advantage.icon className="w-8 h-8 text-white" />
+              <div key={index} className="text-center group p-6 rounded-2xl hover:bg-white hover:shadow-xl transition-all duration-300">
+                <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                  <advantage.icon className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{advantage.title}</h3>
-                <p className="text-gray-600 mb-4">{advantage.description}</p>
-                <div className="inline-flex items-center text-sm font-semibold text-blue-600">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{advantage.title}</h3>
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed">{advantage.description}</p>
+                <div className="inline-flex items-center text-xs font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
                   {advantage.highlight}
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section - 参考米课的紧迫感营造 */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6">准备开始你的外贸之旅吗？</h2>
-          <p className="text-xl mb-8 text-blue-100">
-            加入我们的学员社群，与10000+外贸人一起成长，让19年实战经验助你快速成功
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <Link href="/courses#type-select">
-              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text黑色 font-bold px-8 py-3 text-lg">
-                立即开始学习
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
-            <Link href="/demo?source=home">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-700 px-8 py-3 text-lg">
-                免费试听课程
-                <Play className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
-          </div>
-          
-          {/* 联系方式 - 参考EF的专业展示 */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-            <div className="flex flex-col items-center">
-              <Phone className="w-6 h-6 text-yellow-300 mb-2" />
-              <div className="text-sm text-blue-100">咨询热线</div>
-              <div className="font-semibold">400-888-8888</div>
-            </div>
-            <div className="flex flex-col items-center">
-              <Mail className="w-6 h-6 text-yellow-300 mb-2" />
-              <div className="text-sm text-blue-100">邮箱咨询</div>
-              <div className="font-semibold">contact@newtraining.cn</div>
-            </div>
-            <div className="flex flex-col items-center">
-              <MapPin className="w-6 h-6 text-yellow-300 mb-2" />
-              <div className="text-sm text-blue-100">在线学习</div>
-              <div className="font-semibold">随时随地学习</div>
-            </div>
           </div>
         </div>
       </section>
