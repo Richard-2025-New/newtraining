@@ -20,17 +20,8 @@ import {
   Award
 } from 'lucide-react';
 
-<<<<<<< HEAD
 export default function CourseDetailPage({ params }: any) {
-=======
-interface CourseDetailPageProps {
-  params: {
-    id: string;
-  };
-}
 
-export default function CourseDetailPage({ params }: any) { 
->>>>>>> 543f6950a582ae677cf3fd4bd67ce36b28773968
   // 修正：使用别名 user: currentUser 来匹配组件内的用法
   const { courses, user: currentUser, updateLessonProgress } = useAppStore();
   const course = courses.find(c => c.id === params.id);

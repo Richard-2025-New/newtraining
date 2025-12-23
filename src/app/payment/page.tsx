@@ -33,7 +33,6 @@ export default function PaymentPage() {
   const totalAmount = cartItems.reduce((sum, course) => sum + (course?.price || 0), 0);
 
   const paymentMethods: PaymentMethod[] = [
-<<<<<<< HEAD
     {
       id: 'alipay',
       name: '支付宝',
@@ -62,20 +61,11 @@ export default function PaymentPage() {
       description: '支持Visa、MasterCard等信用卡',
       available: false
     }
-=======
-    { id: 'alipay', name: '支付宝', icon: <QrCode className="h-6 w-6 text-blue-600" />, description: '使用支付宝扫码支付，支持花呗/信用卡', available: true },
-    { id: 'wechat', name: '微信支付', icon: <Smartphone className="h-6 w-6 text-green-600" />, description: '使用微信扫一扫支付', available: true },
-    { id: 'bank', name: '银行转账', icon: <Banknote className="h-6 w-6 text紫-600" />, description: '传统银行转账，适合大额支付', available: true },
-    { id: 'card', name: '信用卡', icon: <CreditCard className="h-6 w-6 text-orange-600" />, description: '支持Visa、MasterCard等信用卡', available: false },
->>>>>>> 543f6950a582ae677cf3fd4bd67ce36b28773968
   ];
 
   const processPayment = () => {
     setIsProcessing(true);
-<<<<<<< HEAD
     // 模拟支付处理
-=======
->>>>>>> 543f6950a582ae677cf3fd4bd67ce36b28773968
     setTimeout(() => {
       const order = {
         id: `order_${Date.now()}`,
@@ -94,10 +84,7 @@ export default function PaymentPage() {
   };
 
   const handlePayment = async () => {
-<<<<<<< HEAD
     // 如果是扫码支付，先显示二维码
-=======
->>>>>>> 543f6950a582ae677cf3fd4bd67ce36b28773968
     if (selectedPayment === 'alipay' || selectedPayment === 'wechat') {
       setPaymentStep('qr-code');
       return;
