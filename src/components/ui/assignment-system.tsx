@@ -128,15 +128,9 @@ export interface AssignmentSystemProps {
   assignments?: Assignment[]
   onSubmit?: (assignmentId: string, submission: AssignmentSubmission) => void
   className?: string
-<<<<<<< HEAD
   courseId?: string // Added
   userId?: string // Added
   assignment?: Assignment // Added to support single assignment mode
-=======
-  courseId?: string
-  userId?: string
-  assignment?: Assignment
->>>>>>> 543f6950a582ae677cf3fd4bd67ce36b28773968
 }
 
 export function AssignmentSystem({ 
